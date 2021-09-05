@@ -25,7 +25,10 @@ namespace Full_GRASP_And_SOLID.Library
         public Equipment Equipment { get; set; }
 
         public double Costo() {
-            return (this.Input.UnitCost*this.Quantity) + (this.Equipment.HourlyCost*this.Time);
+            return ((this.Input.UnitCost*this.Quantity)/1000) + ((this.Equipment.HourlyCost*this.Time)/3600);
         }
+        // Tomamos el tiempo en segundos. 
+        // Tomamos las unidades de los insumos en kilos/litros.
     }
 }
+// Le agregamos la responsabilidad de calcular el costo de los insumos y equipamientos porque conoce todos los datos.
