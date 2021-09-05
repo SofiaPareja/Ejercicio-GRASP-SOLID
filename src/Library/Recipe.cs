@@ -42,7 +42,10 @@ namespace Full_GRASP_And_SOLID.Library
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
             Console.WriteLine($"Costo total de la receta: {this.CostoTotal()}");
+            // Imprimir en pantalla el costo total de la receta. 
         }
         
     }
 }
+
+// Le agregamos la responsabilidad de calcular el costo total porque conoce los costos de cada paso.
