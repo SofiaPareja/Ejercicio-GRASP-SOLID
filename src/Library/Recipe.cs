@@ -6,7 +6,10 @@
 
 using System;
 using System.Collections;
-
+using System.Text;
+/// <summary>
+/// Esta clase tiene la responsabilidad de calcular el costo total de la receta y crear el texto ya que es el experto en esta información.
+/// </summary>
 namespace Full_GRASP_And_SOLID.Library
 {
     public class Recipe
@@ -27,23 +30,30 @@ namespace Full_GRASP_And_SOLID.Library
 
         public double CostoTotal() {
             double resultado = 0;
-            foreach (Step step in this.steps) {
+            foreach (Step step in this.steps) 
+            {
                  resultado = resultado + step.Costo();
-             }
-             return resultado;
+            }
+            return resultado;
         }
 
-        public void PrintRecipe()
+        public StringBuilder GetRecipeText()
         {
-            Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
+            
+            StringBuilder text = new StringBuilder ($"Receta de {this.FinalProduct.Description}:\n");
             foreach (Step step in this.steps)
             {
-                Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
+               text.Append($"{step.Quantity} de '{step.Input.Description}' " +
+                    $"usando '{step.Equipment.Description}' durante {step.Time}\n");
             }
-            Console.WriteLine($"Costo total de la receta: {this.CostoTotal()}");
-            // Imprimir en pantalla el costo total de la receta. 
+            text.Append($"Costo total de la receta: {this.CostoTotal()}");
+            return text;
+            
         }
+
+
+
+       
         
     }
 }

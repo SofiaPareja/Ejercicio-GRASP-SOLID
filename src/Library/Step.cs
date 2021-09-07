@@ -3,7 +3,9 @@
 // Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //-------------------------------------------------------------------------------
-
+/// <summary>
+/// // Le agregamos la responsabilidad de calcular el costo de los insumos y equipamientos porque conoce todos los datos.
+/// </summary>
 namespace Full_GRASP_And_SOLID.Library
 {
     public class Step
@@ -25,10 +27,11 @@ namespace Full_GRASP_And_SOLID.Library
         public Equipment Equipment { get; set; }
 
         public double Costo() {
-            return ((this.Input.UnitCost*this.Quantity)/1000) + ((this.Equipment.HourlyCost*this.Time)/3600);
+            double CostoInsumo = (this.Input.UnitCost*this.Quantity)/1000;
+            double CostoEquipment = (this.Equipment.HourlyCost*this.Time)/3600;
+            return CostoInsumo + CostoEquipment;
         }
         // Tomamos el tiempo en segundos. 
         // Tomamos las unidades de los insumos en kilos/litros.
     }
 }
-// Le agregamos la responsabilidad de calcular el costo de los insumos y equipamientos porque conoce todos los datos.
